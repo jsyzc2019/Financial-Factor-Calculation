@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 '''
  @author: yueyang li
- @last edition:2020-02-08
+ @last edition:2020-02-20
 '''
 # %%这里是数据截止的年份，比如做到2019年12月数据这里就写2019,2020年1月数据就写2020
 GLOBALDate = '2019'
@@ -2735,33 +2735,33 @@ analistfile['number'] = [len(x.split(',')) if type(x) == str else 1 for x in ana
 
 # quarterlydata
 annoucement = pd.read_csv('../data/quarterlydata/annoucement/IAR_Forecdt.csv')
-# balance = pd.read_csv('../data/quarterlydata/balancesheet/FS_Combas.csv')
-# cash = pd.read_csv('../data/quarterlydata/cash/FS_Comscfd.csv')
-# profit = pd.read_csv('../data/quarterlydata/profit/FS_Comins.csv')
-# balance = balance[balance['Typrep'] == 'A']
-# cash = cash[cash['Typrep'] == 'A']
-# profit = profit[profit['Typrep'] == 'A']
-# balancenew = changeSheetdate(balance, 1, annoucement)
-# cashnew = changeSheetdate(cash, 1, annoucement)
-# cashnew = cashnew.sort_values(['Stkcd', 'Accper'])
-# cashnew.reset_index(drop=True, inplace=True)
-# profitnew = changeSheetdate(profit, 1, annoucement)
-# profitnew = profitnew.sort_values(['Stkcd', 'Accper'])
-# profitnew.reset_index(drop=True, inplace=True)
-#
-# balancenew = balancenew.sort_values(['Stkcd', 'Accper'])
-# balancenew.reset_index(drop=True, inplace=True)
+balance = pd.read_csv('../data/quarterlydata/balancesheet/FS_Combas.csv')
+cash = pd.read_csv('../data/quarterlydata/cash/FS_Comscfd.csv')
+profit = pd.read_csv('../data/quarterlydata/profit/FS_Comins.csv')
+balance = balance[balance['Typrep'] == 'A']
+cash = cash[cash['Typrep'] == 'A']
+profit = profit[profit['Typrep'] == 'A']
+balancenew = changeSheetdate(balance, 1, annoucement)
+cashnew = changeSheetdate(cash, 1, annoucement)
+cashnew = cashnew.sort_values(['Stkcd', 'Accper'])
+cashnew.reset_index(drop=True, inplace=True)
+profitnew = changeSheetdate(profit, 1, annoucement)
+profitnew = profitnew.sort_values(['Stkcd', 'Accper'])
+profitnew.reset_index(drop=True, inplace=True)
 
-# ZTSJ = pd.read_csv('../data/quarterlydata/depreciation/MNMAPR_Accruals.csv')
-# ZTSJnew = changeSheetdate(ZTSJ, 1, annoucement)
-# ZTSJnew = ZTSJnew.sort_values(['Stkcd', 'Accper'])
-# ZTSJnew.reset_index(drop=True, inplace=True)
-# ZTSJnew.to_csv('../data/quarterlydata/depreciation/MNMAPR_AccrualsNew.csv')
-# ZTSJ = ZTSJnew
-# # 二次引用
-# balancenew.to_csv('../data/quarterlydata/balancesheet/FS_CombasNew.csv')
-# cashnew.to_csv('../data/quarterlydata/cash/FS_ComscfdNew.csv')
-# profitnew.to_csv('../data/quarterlydata/profit/FS_CominsNew.csv')
+balancenew = balancenew.sort_values(['Stkcd', 'Accper'])
+balancenew.reset_index(drop=True, inplace=True)
+
+ZTSJ = pd.read_csv('../data/quarterlydata/depreciation/MNMAPR_Accruals.csv')
+ZTSJnew = changeSheetdate(ZTSJ, 1, annoucement)
+ZTSJnew = ZTSJnew.sort_values(['Stkcd', 'Accper'])
+ZTSJnew.reset_index(drop=True, inplace=True)
+ZTSJnew.to_csv('../data/quarterlydata/depreciation/MNMAPR_AccrualsNew.csv')
+ZTSJ = ZTSJnew
+# 二次引用
+balancenew.to_csv('../data/quarterlydata/balancesheet/FS_CombasNew.csv')
+cashnew.to_csv('../data/quarterlydata/cash/FS_ComscfdNew.csv')
+profitnew.to_csv('../data/quarterlydata/profit/FS_CominsNew.csv')
 
 balance = pd.read_csv('../data/quarterlydata/balancesheet/FS_CombasNew.csv')
 cash = pd.read_csv('../data/quarterlydata/cash/FS_ComscfdNew.csv')
